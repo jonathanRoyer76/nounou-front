@@ -11,13 +11,13 @@
   <mat-card>
       <i class="material-icons prefix">email</i>
       <mat-form-field>
-          <input matInput type="text" placeholder='E-mail'[(ngModel)]="user.email" name="mail">
+          <input matInput type="text" placeholder="Nom d'utilisateur" [(ngModel)]="user.userName" name="userName">
       </mat-form-field>
       <br><i class="material-icons prefix">vpn_key</i>
       <mat-form-field>
           <input matInput type="password" placeholder='Mot de passe'[(ngModel)] = "user.password" name="password">
       </mat-form-field><br>     
-      <button mat-raised-button (click)="signIn()" name="btnEnvoi" class = "btn z-depth-4">Connexion</button><br/>         
+      <button mat-raised-button (click)="signIn()" name="submit" class = "btn z-depth-4">Connexion</button><br/>         
       <br><a routerLink="/signUp">S'inscrire </a> 
   </mat-card>    
 </ng-template> 

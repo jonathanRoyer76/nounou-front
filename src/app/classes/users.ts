@@ -8,4 +8,8 @@ export class User{
     password: string  = "";
     userName: string  = "";
     roles   : Role[]  = [];
+
+    constructor(){
+        
+    }
 }

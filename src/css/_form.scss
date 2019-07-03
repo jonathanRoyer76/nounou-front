@@ -1,0 +1,10 @@
+@include mat-form-field-theme($myTheme);
+@include mat-sidenav-theme($myTheme);
+
+@mixin myFormulaire($myTheme){
+    .register{
+        @include mat-form-field-theme($myTheme);
+        @include mat-sidenav-theme($myTheme);
+        
+    }
+}

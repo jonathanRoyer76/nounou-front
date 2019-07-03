@@ -1,0 +1,53 @@
+@import "../../node_modules/@angular/material/theming"; 
+@import "_mat_card";
+
+@include mat-core();
+$myPrimary: mat-palette($mat-pink, A400); 
+$myAccent:  mat-palette($mat-teal, 400);
+// The warn palette is optional (defaults to red).
+$myWarn: mat-palette($mat-red);
+
+$myTheme: mat-light-theme($myPrimary, $myAccent, $myWarn); 
+@include angular-material-theme($myTheme);
+@include my_mat_card;
+// @import 'button';
+// @import 'formulaire';
+// @include myButton($myTheme);
+// @include myFormulaire($myTheme); 
+
+#conteneur{
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap;
+}
+
+a{
+    text-decoration: none;
+    color: mat-color($myPrimary);
+    cursor: pointer;
+}
+
+.profil{
+    max-width: 300px;
+}
+
+.sidenavContainer{
+    position: absolute;    
+}
+
+.sidenav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+}
+
+.banniere{
+    height: 500px;    
+    background-size: cover;
+    background-image: url('assets/header.jpg');
+}
+
+.h3-contrat{
+    color : mat-color($myAccent);
+}

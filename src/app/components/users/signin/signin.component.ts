@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/classes/users';
 import { IUser } from 'src/app/interfaces/user';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-signin',
@@ -9,11 +10,13 @@ import { IUser } from 'src/app/interfaces/user';
 })
 export class SigninComponent implements OnInit {
 
-  user: IUser = new User();
+  user = new User();
   // To know if a user is connected
   isConnected: boolean = false;
 
-  constructor() { }
+  constructor(
+    private usersService: UsersService
+  ) { }
 
   ngOnInit() {
   }
@@ -29,7 +32,11 @@ export class SigninComponent implements OnInit {
    * To sign in a user
    */
   signIn(){
-
+    console.log('dans le component');
+    this.usersService.signIn().subscribe(data => {
+      console.log('retour des datas :')
+      console.log(data)
+    })
   }
 
   /**
