@@ -10,7 +10,7 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class SigninComponent implements OnInit {
 
-  user = new User();
+  user: IUser = new User();
   // To know if a user is connected
   isConnected: boolean = false;
 
@@ -32,11 +32,7 @@ export class SigninComponent implements OnInit {
    * To sign in a user
    */
   signIn(){
-    console.log('dans le component');
-    this.usersService.signIn().subscribe(data => {
-      console.log('retour des datas :')
-      console.log(data)
-    })
+    this.usersService.signIn(this.user);
   }
 
   /**

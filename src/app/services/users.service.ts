@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as constants from '../commons/constants';
 import { IUser } from '../interfaces/user';
-import { User } from '../classes/users';
+import { IToken } from '../interfaces/token';
+import { UtilsMethods } from '../commons/utilsMethods'
 
 @Injectable({
   providedIn: 'root'
@@ -16,16 +17,12 @@ export class UsersService {
   /**
    * To sign in a user
    */
-  public signIn(){
-    console.log('dans le service') 
-    let headers = new HttpHeaders()
-      .set('Access-Control-Allow-Origin', '*')
-      .set('Content-Type', 'multipart/form-data')
-      // .set('userName', 'jojo') 
-      // .set('password', 'pass')
-      let body = new User();
-      body.password = 'pass';
-      body.userName = 'jojo' 
-    return this.http.post('http://localhost:8080/login', body, { headers: headers}); 
+  public signIn(p_user: IUser){
+    this.http.post<IToken>(`${constants.SERVER_URL}:${constants.SERVER_PORT}/${constants.USER_SIGNIN}`, p_user, { headers: constants.GLOBAL_HEADERS})
+      .subscribe(data => {
+        if (data.token != ""){
+          UtilsMethods.saveToken(data.token);
+        }
+      }, err => console.error(err))
   }
 }
