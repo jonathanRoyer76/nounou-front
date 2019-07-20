@@ -4,6 +4,12 @@ import { isNullOrUndefined } from 'util';
 import * as jwtDecode from 'jwt-decode';
 import { IJwtToken } from 'src/app/interfaces/jwtToken';
 import { UtilsMethods } from 'src/app/commons/utilsMethods';
+import { IUser } from 'src/app/interfaces/user';
+import { HttpClient } from '@angular/common/http';
+import { IToken } from 'src/app/interfaces/token';
+import { Toaster } from 'src/app/commons/Toaster';
+import { UsersService } from '../users/users.service';
+import { IPerson } from 'src/app/interfaces/person';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +19,9 @@ export class AuthenticationService {
   private _token: string;
   private _decodedToken: IJwtToken;
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private usersService: UsersService) { }
 
   /**
    * Decode the token and retrieve th eexpiration time
@@ -97,5 +105,40 @@ export class AuthenticationService {
       return true;
     }
     return false;
+  }
+
+  /**
+   * To sign out a user
+   */
+  signOut() {
+    this._token = null;
+    this._decodedToken = null;
+    localStorage.setItem(constants.LOCAL_STORAGE_TOKEN, null);
+    this.usersService.userConnected = null;
+    this.usersService.isConnected.next(false);
+    this.usersService.userConnectedSubject.next(null);
+  }
+
+  /**
+   * To register a new user
+   */
+  signUp(p_person: IPerson) {
+
+  }
+
+  /**
+   * To sign in a user
+   */
+  public signIn(p_user: IUser): void {
+
+    this.http.post<IToken>(`${constants.SERVER_FULL_PATH}/${constants.USER_SIGNIN}`, p_user, { headers: constants.GLOBAL_HEADERS})
+    .subscribe(token => {
+      this.saveToken(token.token);
+      Toaster.showSuccessPopup(`Bon retour sur le site.`, `Bienvenue`);
+      this.usersService.isConnected.next(true);
+    }, error => {
+      Toaster.error(error.message, 'Identification impossible');
+      this.usersService.isConnected.next(false);
+    });
   }
 }

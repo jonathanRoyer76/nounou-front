@@ -42,7 +42,8 @@ export class SigninComponent implements OnInit, OnDestroy {
    */
   signIn() {
 
-    this.usersService.signIn(this.user);
+    this.authenticationService.signIn(this.user);
+
   }
 
   /**

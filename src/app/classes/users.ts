@@ -1,15 +1,14 @@
-import { Role } from './roles'
+import { Role } from './roles';
 
-export class User{
-    id      : number  = 0;
-    email   : string  = "";
-    isActive: boolean = false;
-    isAdmin : boolean = false;
-    password: string  = "";
-    userName: string  = "";
-    roles   : Role[]  = [];
+export class User {
+    id: number;
+    email: string;
+    isActive: boolean;
+    isAdmin: boolean;
+    password: string;
+    userName: string ;
+    roles: Role[]  = [];
 
-    constructor(){
-        
+    constructor() {
     }
 }
