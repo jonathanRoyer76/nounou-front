@@ -11,10 +11,12 @@ import { AppComponent } from './app.component';
 import { SigninComponent } from './components/users/signin/signin.component';
 import { SignupComponent } from './components/users/signup/signup.component';
 // Services
-import { UsersService } from './services/users.service'
+import { UsersService } from './services/users/users.service'
 // Modules
 import { AppRoutingModule } from './modules/app-routing.module'
 import { materialModule } from './modules/material'
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'
+import { AuthenticationService } from './services/authentication/authentication.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { materialModule } from './modules/material'
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     {
@@ -37,7 +40,7 @@ import { materialModule } from './modules/material'
       multi: true
     },
     UsersService,
-    
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })

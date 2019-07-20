@@ -1,14 +1,18 @@
-import * as constants from './constants'
+/**
+ * Some generic usefull methods
+ */
+export class UtilsMethods {
 
-export class UtilsMethods{
+    /**
+     * Return a date from a timestamp
+     * @param p_timestamp the timestamp to convert
+     */
+    static getDateFromTimeStamp(p_timestamp: number) {
 
-    // Save JWT token in local Storage 
-    static saveToken(p_token: string){
-        localStorage.setItem(constants.LOCAL_STORAGE_TOKEN, p_token);
-    }
-
-    // Load and return token in local storage
-    static getStoredToken(): string{
-        return localStorage.getItem(constants.LOCAL_STORAGE_TOKEN);
+        let returnObject: Date = null;
+        if (p_timestamp > 0) {
+            returnObject = new Date(p_timestamp * 1000);
+        }
+        return returnObject;
     }
 }

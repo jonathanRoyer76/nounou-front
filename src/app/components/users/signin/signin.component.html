@@ -1,7 +1,7 @@
 <div *ngIf='isConnected; else elseBlock'>
   <mat-card>
       <mat-card-header>            
-            <mat-card-title><h3>{{user.userName}}</h3></mat-card-title>
+            <mat-card-title><h3>{{userConnected.userName}}</h3></mat-card-title>
             <img #avatar mat-card-avatar mat-card-md-image>
             <mat-card-subtitle><a routerLink='/' (click)='signOut()'>Déconnexion</a></mat-card-subtitle>
       </mat-card-header> 
