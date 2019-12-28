@@ -1,22 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { HttpClientModule } from '@angular/common/http'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './commons/tokenInterceptor';
-// Components
+/**
+ * Components
+ */
 import { AppComponent } from './app.component';
 import { SigninComponent } from './components/users/signin/signin.component';
 import { SignupComponent } from './components/users/signup/signup.component';
-// Services
-import { UsersService } from './services/users/users.service'
-// Modules
-import { AppRoutingModule } from './modules/app-routing.module'
-import { materialModule } from './modules/material'
-import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2'
+/**
+ * Services
+ */
+import { UsersService } from './services/users/users.service';
+import { TypesPersonService } from './services/typesPerson/typesPerson.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
+/**
+ * Modules
+ */
+import { AppRoutingModule } from './modules/app-routing.module';
+import { materialModule } from './modules/material';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -29,6 +36,7 @@ import { AuthenticationService } from './services/authentication/authentication.
     materialModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     SweetAlert2Module.forRoot()
@@ -40,7 +48,8 @@ import { AuthenticationService } from './services/authentication/authentication.
       multi: true
     },
     UsersService,
-    AuthenticationService
+    AuthenticationService,
+    TypesPersonService
   ],
   bootstrap: [AppComponent]
 })

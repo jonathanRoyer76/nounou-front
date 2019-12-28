@@ -10,10 +10,6 @@ $myWarn: mat-palette($mat-red);
 $myTheme: mat-light-theme($myPrimary, $myAccent, $myWarn); 
 @include angular-material-theme($myTheme);
 @include my_mat_card;
-// @import 'button';
-// @import 'formulaire';
-// @include myButton($myTheme);
-// @include myFormulaire($myTheme); 
 
 #conteneur{
     display: flex;
@@ -25,6 +21,10 @@ a{
     text-decoration: none;
     color: mat-color($myPrimary);
     cursor: pointer;
+}
+
+mat-icon, mat-card-title, .button, input[type='text'], input[type='file'], mat-datepicker, mat-datepicker-toggle{
+    color: mat-color($myPrimary);
 }
 
 .profil{

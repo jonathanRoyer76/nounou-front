@@ -1,55 +1,52 @@
 <form class ='register' [formGroup]='myFormGroup'>
-  <mat-icon matPrefix>person</mat-icon>
-  <mat-form-field>
-      <input matInput placeholder='Nom'[(ngModel)]="personne.nom" type="text" formControlName="nom" required>
-      <mat-error *ngIf='controlNom.invalid'>Champ requis invalide</mat-error>
-  </mat-form-field>
-  <mat-icon>person</mat-icon>
-  <mat-form-field>
-      <input matInput placeholder='Prénom'[(ngModel)]="personne.prenom" type="text" formControlName="prenom" required>
-      <mat-error *ngIf='controlPrenom.invalid'>Champ requis invalide</mat-error>
-  </mat-form-field>
-  <mat-icon>vpn_key</mat-icon>
-  <mat-form-field>
-      <input matInput placeholder='Mot de passe'[(ngModel)]="personne.password"type="password" formControlName="password" required>
-      <mat-error *ngIf='controlPassword.invalid'>Champ requis invalide</mat-error>
-  </mat-form-field>
-  <mat-icon>vpn_key</mat-icon>
-  <mat-form-field>
-      <input matInput placeholder='Confirmer le mot de passe'[(ngModel)]="personne.confirmPassword"type="password" formControlName="confirmPassword" required [formControl]="controlConfirmPassword"> 
-      <mat-error *ngIf='controlConfirmPassword.invalid'>Champ requis invalide</mat-error> 
-  </mat-form-field>
-  <mat-icon>phone</mat-icon>
-  <mat-form-field>
-      <input matInput [(ngModel)]="personne.telPortable"type="text" placeholder="01-23-45-67-89 ou 0123456789" formControlName="telPortable" [formControl]="controltelPortable">
-  </mat-form-field>
-  <mat-form-field>
-      <input matInput [matDatepicker]="dateNaissance" [(ngModel)]="personne.dateNaissance" placeholder ='Date de naissance' formControlName="dateNaissance" [formControl]="controlDateNaissance">
-      <mat-datepicker-toggle matPrefix [for]="dateNaissance"></mat-datepicker-toggle>
-      <mat-datepicker #dateNaissance></mat-datepicker>
-  </mat-form-field>
-  <mat-icon>place</mat-icon>
-  <mat-form-field>
-      <input matInput [(ngModel)]="personne.adresse"type="text" placeholder ='Adresse' formControlName="adresse">
-  </mat-form-field>
-  <mat-icon>email</mat-icon>
-  <mat-form-field>    
-      <input matInput placeholder='E-mail'[(ngModel)]="personne.mail" type="text" formControlName="mail" required [formControl]="controlMail">
-      <mat-error *ngIf='controlMail.invalid'>Champ requis invalide</mat-error>
-  </mat-form-field>
-      <div>
-          <mat-icon>add_a_photo</mat-icon>
-          <input type="file" (change)="selectionFichier($event)" name="avatar" accept=".jpg, .jpeg, .png, .bmp">
-      </div>
-  <p>
-      <button mat-raised-button (click)="retour()" name="retour">
-          <mat-icon>arrow_back</mat-icon> Retour
-      </button> 
-      <button mat-raised-button (click)="validation()" name="validation">Valider 
-          <mat-icon>send</mat-icon>
-      </button>    
-      <!-- <button mat-raised-button (click)="test()">
-          <mat-icon>build</mat-icon>Test
-      </button> -->
-  </p>
+    <mat-icon matPrefix>person</mat-icon>
+    <mat-form-field>
+        <input matInput placeholder='Nom' type="text" formControlName="lastName" required>
+        <mat-error *ngIf='lastNameControl.invalid'>Champ requis invalide</mat-error>
+    </mat-form-field>
+    <mat-icon>person</mat-icon>
+    <mat-form-field>
+        <input matInput placeholder='Prénom' type="text" formControlName="firstName" required>
+        <mat-error *ngIf='firstNameControl.invalid'>Champ requis invalide</mat-error>
+    </mat-form-field>  
+    <mat-icon>phone</mat-icon>
+    <mat-form-field>
+        <input matInput type="text" placeholder="01-23-45-67-89 ou 0123456789" formControlName="mobileNumber" [formControl]="mobileNumberControl">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="text" [matDatepicker]="dateNaissance" placeholder ='Date de naissance' formControlName="birthDate" [formControl]="birthDateControl">
+        <mat-datepicker-toggle matPrefix [for]="dateNaissance"></mat-datepicker-toggle>
+        <mat-datepicker #dateNaissance></mat-datepicker>
+    </mat-form-field>
+    <mat-icon>place</mat-icon>
+    <mat-form-field>
+        <input matInput type="text" placeholder ='Adresse' formControlName="adress">
+    </mat-form-field>
+    <mat-icon>email</mat-icon>
+    <mat-form-field>    
+        <input matInput placeholder='E-mail' type="text" formControlName="email" required [formControl]="emailControl">
+        <mat-error *ngIf='emailControl.invalid'>Champ requis invalide</mat-error>
+    </mat-form-field>
+    <!-- <mat-form-field *ngIf='connectedUser != null && connectedUser.admin'>   
+        <mat-checkbox formControlName="isActive" color ='primary' >Compte actif</mat-checkbox>
+    </mat-form-field> -->
+    <mat-form-field *ngIf='connectedUser != null && connectedUser.admin'>        
+        <mat-select placeholder='type de personne'>
+            <mat-option *ngFor='let temp of personTypeList' [value]='temp.id'>
+                <span (click)="onSelect(temp.id)">{{temp.name}}</span>
+            </mat-option>
+        </mat-select>
+    </mat-form-field>    
+    <div>
+        <mat-icon>add_a_photo</mat-icon>
+        <input type="file" (change)="fileSelection($event)" name="avatar" accept=".jpg, .jpeg, .png, .bmp">
+    </div>
+    <p>
+        <button mat-raised-button class="button" (click)="back()" name="retour">
+            <mat-icon>arrow_back</mat-icon> Retour
+        </button> 
+        <button mat-raised-button [disabled]='!myFormGroup.valid' class="button" (click)="formValidation()" name="validation">Valider 
+            <mat-icon>send</mat-icon>
+        </button>
+    </p>
 </form>

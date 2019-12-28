@@ -14,12 +14,12 @@ const Routes: Routes = [
   // {path: 'Profiles', component     : DisplayDataTableComponent},
   // {path: 'ProfileNounou', component: ProfilNounouComponent},
   // {path: 'Contrat', component      : ContratComponent},
-  {path: '', redirectTo: 'signIn', pathMatch: 'full'},
-]
+  {path: '', redirectTo: 'signUp', pathMatch: 'full'},
+];
 
 @NgModule({
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterModule.forRoot(Routes)
   ],
   exports: [

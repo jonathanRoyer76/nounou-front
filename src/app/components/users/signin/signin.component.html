@@ -1,23 +1,25 @@
 <div *ngIf='isConnected; else elseBlock'>
-  <mat-card>
+  <div *ngIf='userConnected != null'>
+    <mat-card>
       <mat-card-header>            
             <mat-card-title><h3>{{userConnected.userName}}</h3></mat-card-title>
             <img #avatar mat-card-avatar mat-card-md-image>
             <mat-card-subtitle><a routerLink='/' (click)='signOut()'>Déconnexion</a></mat-card-subtitle>
       </mat-card-header> 
-  </mat-card>    
+    </mat-card>   
+  </div>
 </div>
 <ng-template #elseBlock>  
   <mat-card>
-      <i class="material-icons prefix">email</i>
+      <mat-icon>email</mat-icon>
       <mat-form-field>
           <input matInput type="text" placeholder="Nom d'utilisateur" [(ngModel)]="user.userName" name="userName">
       </mat-form-field>
-      <br><i class="material-icons prefix">vpn_key</i>
+      <br><mat-icon>vpn_key</mat-icon>
       <mat-form-field>
           <input matInput type="password" placeholder='Mot de passe'[(ngModel)] = "user.password" name="password">
       </mat-form-field><br>     
-      <button mat-raised-button (click)="signIn()" name="submit" class = "btn z-depth-4">Connexion</button><br/>         
+      <button mat-raised-button (click)="signIn()" class="button" name="submit" >Connexion</button><br/>         
       <br><a routerLink="/signUp">S'inscrire </a> 
   </mat-card>    
-</ng-template> 
+</ng-template>

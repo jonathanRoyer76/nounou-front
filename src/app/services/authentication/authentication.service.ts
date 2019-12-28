@@ -114,7 +114,6 @@ export class AuthenticationService {
     this._token = null;
     this._decodedToken = null;
     localStorage.setItem(constants.LOCAL_STORAGE_TOKEN, null);
-    this.usersService.userConnected = null;
     this.usersService.isConnected.next(false);
     this.usersService.userConnectedSubject.next(null);
   }

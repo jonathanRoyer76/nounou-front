@@ -3,8 +3,8 @@ import { Role } from './roles';
 export class User {
     id: number;
     email: string;
-    isActive: boolean;
-    isAdmin: boolean;
+    active: boolean;
+    admin: boolean;
     password: string;
     userName: string ;
     roles: Role[]  = [];
