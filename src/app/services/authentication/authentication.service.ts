@@ -119,13 +119,6 @@ export class AuthenticationService {
   }
 
   /**
-   * To register a new user
-   */
-  signUp(p_person: IPerson) {
-
-  }
-
-  /**
    * To sign in a user
    */
   public signIn(p_user: IUser): void {
