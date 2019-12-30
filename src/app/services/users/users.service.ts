@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import * as constants from '../../commons/constants';
 import { IUser } from '../../interfaces/user';
 import { BehaviorSubject } from 'rxjs';
-import { Toaster } from '../../commons/Toaster';
+import * as urls from '../../commons/urls';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class UsersService {
    */
   public getUserbyToken(): void {
 
-    this.http.get<IUser>(`${constants.SERVER_FULL_PATH}/${constants.USER_GET_BY_TOKEN}`,
+    this.http.get<IUser>(`${urls.SERVER_FULL_PATH}/${urls.USER_GET_BY_TOKEN}`,
     { headers: constants.GLOBAL_HEADERS}).subscribe(user => {
       this.userConnectedSubject.next(user);
       this.isConnected.next(true);

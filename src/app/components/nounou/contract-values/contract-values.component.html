@@ -1,0 +1,33 @@
+<form class='addProfil' [formGroup]='userForm'>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Taux horaire" formControlName="tauxHoraire" >
+    <mat-error *ngIf='userForm.invalid'>Champ requis invalide</mat-error>
+    <mat-icon matSuffix>euro_symbol</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Montant d'un repas" formControlName="montantRepas" >
+    <mat-error *ngIf='userForm.invalid'>Champ requis invalide</mat-error>
+    <mat-icon matSuffix>euro_symbol</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" placeholder="Montant d'une indemnité" formControlName="montantIndemnites" >
+    <mat-error *ngIf='userForm.invalid'>Champ requis invalide</mat-error>
+    <mat-icon matSuffix>euro_symbol</mat-icon>
+  </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Montant d'un gouter" formControlName="montantGouter" >
+      <mat-error *ngIf='userForm.invalid'>Champ requis invalide</mat-error>
+      <mat-icon matSuffix>euro_symbol</mat-icon>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Barème au kilomètre" formControlName="baremeKm" >
+      <mat-error *ngIf='userForm.invalid'>Champ requis invalide</mat-error>
+      <mat-icon matSuffix>euro_symbol</mat-icon>
+    </mat-form-field>     
+  <div>
+    <button mat-raised-button color="primary" [disabled]="userForm.invalid" (click)="validation()">
+      Valider 
+      <mat-icon>send</mat-icon>
+    </button>    
+  </div>
+</form>

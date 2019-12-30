@@ -12,12 +12,14 @@ import { TokenInterceptor } from './commons/tokenInterceptor';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './components/users/signin/signin.component';
 import { SignupComponent } from './components/users/signup/signup.component';
+import { ContractValuesComponent } from './components/nounou/contract-values/contract-values.component';
 /**
  * Services
  */
 import { UsersService } from './services/users/users.service';
 import { TypesPersonService } from './services/typesPerson/typesPerson.service';
 import { AuthenticationService } from './services/authentication/authentication.service';
+import { ContractValuesService } from './services/nounou/contract-values/contract-values.service';
 /**
  * Modules
  */
@@ -29,7 +31,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
   declarations: [
     AppComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    ContractValuesComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     },
     UsersService,
     AuthenticationService,
-    TypesPersonService
+    TypesPersonService,
+    ContractValuesService
   ],
   bootstrap: [AppComponent]
 })

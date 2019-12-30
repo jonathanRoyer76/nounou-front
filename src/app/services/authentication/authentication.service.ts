@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as constants from '../../commons/constants';
+import * as urls from '../../commons/urls';
 import { isNullOrUndefined } from 'util';
 import * as jwtDecode from 'jwt-decode';
 import { IJwtToken } from 'src/app/interfaces/jwtToken';
@@ -9,7 +10,6 @@ import { HttpClient } from '@angular/common/http';
 import { IToken } from 'src/app/interfaces/token';
 import { Toaster } from 'src/app/commons/Toaster';
 import { UsersService } from '../users/users.service';
-import { IPerson } from 'src/app/interfaces/person';
 
 @Injectable({
   providedIn: 'root'
@@ -123,7 +123,7 @@ export class AuthenticationService {
    */
   public signIn(p_user: IUser): void {
 
-    this.http.post<IToken>(`${constants.SERVER_FULL_PATH}/${constants.USER_SIGNIN}`, p_user, { headers: constants.GLOBAL_HEADERS})
+    this.http.post<IToken>(`${urls.SERVER_FULL_PATH}/${urls.USER_SIGNIN}`, p_user, { headers: constants.GLOBAL_HEADERS})
     .subscribe(token => {
       this.saveToken(token.token);
       Toaster.showSuccessPopup(`Bon retour sur le site.`, `Bienvenue`);
